@@ -1,20 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
+import { CounterApp, store } from './counter-app';
+import { AppStore } from './app-store';
+import { CounterComponent } from './counter.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    CounterApp,
+    CounterComponent
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule
+    BrowserModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: AppStore, useValue: store
+    }
+  ],
+  bootstrap: [CounterApp]
 })
 export class AppModule { }
